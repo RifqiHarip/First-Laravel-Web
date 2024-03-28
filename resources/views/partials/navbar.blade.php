@@ -13,6 +13,10 @@
             <a class="nav-link " href="{{ URL::to('/') }}">Welcome</a>
             </li>
             <li class="nav-item">
+            <a class="nav-link" href="{{ URL::to('/posts') }}">Blog Posts</a>
+            </li>
+            </li>
+            <li class="nav-item">
             <a class="nav-link" href="{{ URL::to('/about') }}">About</a>
             </li>
 
