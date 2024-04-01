@@ -1,0 +1,63 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentation of my API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/student": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Get student data",
+                "description": "Get student data from laravel-eight mysql database",
+                "operationId": "student",
+                "responses": {
+                    "default": {
+                        "description": "return student array model"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Student"
+                ],
+                "summary": "Add student data",
+                "description": "Post student data to laravel-eight mysql database",
+                "operationId": "student/store",
+                "requestBody": {
+                    "description": "Student form",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "Add student data to the database"
+                    }
+                }
+            }
+        }
+    }
+}

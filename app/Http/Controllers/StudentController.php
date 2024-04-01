@@ -8,6 +8,19 @@ use Validator;
 
 class StudentController extends Controller
 {
+    /**
+     * @OA\Get(
+     *      path="/api/student",
+     *      tags={"Student"},
+     *      summary="Get student data",
+     *      description="Get student data from laravel-eight mysql database",
+     *      operationId="student",
+     *      @OA\Response(
+     *          response="default",
+     *          description="return student array model"
+     *       )
+     *  )
+     */
     public function index()
     {
         $student = Student::all();
@@ -19,6 +32,29 @@ class StudentController extends Controller
             return response()->json($data,200);
     }
     
+    /**
+     * @OA\Post(
+     *      path="/api/student",
+     *      tags={"Student"},
+     *      summary="Add student data",
+     *      description="Post student data to laravel-eight mysql database",
+     *      operationId="student/store",
+     *      @OA\RequestBody(
+     *          required=true,
+     *          description="Student form",
+     *          @OA\JsonContent(
+     *              required={"name","email"},
+     *              @OA\Property(property="name", type="string"),
+     *              @OA\Property(property="email", type="string"),
+     *              @OA\Property(property="phone", type="string"),
+     *              ),
+     *          ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="Add student data to the database"
+     *          )
+     *  )
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
