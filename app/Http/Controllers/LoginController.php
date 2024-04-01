@@ -17,11 +17,7 @@ class LoginController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-
-        if(Auth::attempt($credentials)){
-            $request->session()->regenerate();
-            return redirect()->intended('/posts');
-        }
-        return 'Failure';
+       
+        dd($credentials);
     }
 }

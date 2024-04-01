@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/posts',[PostController::class,'collect']);
+Route::get('/posts/{id}',[PostController::class,'collectone']);
 
 Route::get('student',[StudentController::class,'index']);
 Route::post('student',[StudentController::class,'store']);

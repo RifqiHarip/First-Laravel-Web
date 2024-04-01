@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Http\Resources\PostResource;
 
 class PostController extends Controller
 {
@@ -20,6 +21,18 @@ class PostController extends Controller
             "title" => "Single Post",
             "post" => Post::find($slug)
         ]);
+    }
+
+    public function collect()
+    {
+        $posts = Post::all();
+        return PostResource::collection($posts);
+    }
+
+    public function collectone($id)
+    {
+        $post = Post::findOrFail($id);
+        return new PostResource($post);
     }
 
 }
